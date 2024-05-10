@@ -1,6 +1,6 @@
 ---
 title: "IBM Acquisition Team Recommendations"
-author: "Michael Williams, Connor Martin, Zafir Maker-Agha, Alan Mcmillin, Matthew Feigenbaum"
+author: "Michael Williams"
 date: "March 18th"
 output: 
   html_document:
@@ -15,33 +15,74 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Our Audience
 
-Our audience comprises the acquisition team of IBM (International Business Machines Corporation), a global technology conglomerate renowned for its diverse hiring practices and varied workforce productivity. Central to their concerns is the challenge of worker attrition. Our objective is to provide guidance that ensures the recruitment of high-quality candidates with a diminished likelihood of turnover. By optimizing hiring practices in this manner, we aim to enhance profitability in both the short and long term for IBM.
+Our audience comprises the acquisition team of IBM (International Business Machines
+Corporation), a global technology conglomerate renowned for its diverse hiring
+practices and varied workforce productivity. Central to their concerns is the challenge
+of worker attrition. Our objective is to provide guidance that ensures the recruitment
+of high-quality candidates with a diminished likelihood of turnover. By optimizing
+hiring practices in this manner, we aim to enhance profitability in both the short and
+long term for IBM.
 
 ## Our Question
 
-Our paramount concern is addressing how we can optimize both the caliber and overall productivity of our workforce, while safeguarding against premature turnover. At the core of this inquiry lies the imperative to maximize the profitability derived from each hire, considering that recruiting individuals who swiftly depart leads to negative returns on investment, particularly in terms of training costs. <br>
+Our paramount concern is addressing how we can optimize both the caliber and overall
+productivity of our workforce, while safeguarding against premature turnover. At the
+core of this inquiry lies the imperative to maximize the profitability derived from
+each hire, considering that recruiting individuals who swiftly depart leads to negative
+returns on investment, particularly in terms of training costs. <br>
 
-Hence, it is imperative that we meticulously screen candidates to avert scenarios where early attrition undermines our bottom line
+Hence, it is imperative that we meticulously screen candidates to avert scenarios where
+early attrition undermines our bottom line
 
 ## Our Narrative
 
-IBM's workforce spans across various fields, yet recent trends reveal a concerning pattern of premature departures, resulting in significant profit setbacks. The root of the issue lies in the acquisition team's emphasis on short-term productivity, overlooking the crucial factor of employee retention. <br>
+IBM's workforce spans across various fields, yet recent trends reveal a concerning
+pattern of premature departures, resulting in significant profit setbacks. The root of
+the issue lies in the acquisition team's emphasis on short-term productivity,
+overlooking the crucial factor of employee retention. <br>
 
-Similar to university admissions strategies, where institutions like the University of Michigan might forgo exceptional applicants due to concerns about their commitment, IBM must adopt a nuanced approach. We propose a strategy that balances maximizing immediate output with the long-term goal of retaining top talent. <br>
 
-Our solution involves screening candidates not only for their potential contributions to IBM but also for their propensity to remain with the company. By prioritizing individuals who demonstrate both high potential and a commitment to long-term engagement, we mitigate the risk of negative profit margins associated with frequent turnover. <br>
+Similar to university admissions strategies, where institutions like the University of
+Michigan might forgo exceptional applicants due to concerns about their commitment, IBM
+must adopt a nuanced approach. We propose a strategy that balances maximizing immediate
+output with the long-term goal of retaining top talent. <br>
 
-In essence, our tailored models enable IBM to navigate the seemingly paradoxical challenge of selecting candidates who are both highly productive and likely to stay. By investing in employees who align with the company's long-term vision, IBM can secure greater profitability in the years ahead. <br>
+Our solution involves screening candidates not only for their potential contributions
+to IBM but also for their propensity to remain with the company. By prioritizing
+individuals who demonstrate both high potential and a commitment to long-term
+engagement, we mitigate the risk of negative profit margins associated with frequent
+turnover. <br>
+
+In essence, our tailored models enable IBM to navigate the seemingly paradoxical
+challenge of selecting candidates who are both highly productive and likely to stay. By
+investing in employees who align with the company's long-term vision, IBM can secure
+greater profitability in the years ahead. <br>
 
 ## How we Quantify our Work
 
-In order to quantify the impact of our work, we have assigned monetary values to our final outcomes, streamlining worker productivity into a comprehensible variable. This variable encompasses several factors: tenure, job level, engagement, overtime commitment, performance ratings, and compensation, each meticulously calibrated to accurately reflect worker quality. Furthermore, we've quantified the financial impact of attrition, ensuring clarity and ease of interpretation for our results. <br>
+In order to quantify the impact of our work, we have assigned monetary values to our
+final outcomes, streamlining worker productivity into a comprehensible variable. This
+variable encompasses several factors: tenure, job level, engagement, overtime
+commitment, performance ratings, and compensation, each meticulously calibrated to
+accurately reflect worker quality. Furthermore, we've quantified the financial impact
+of attrition, ensuring clarity and ease of interpretation for our results. <br>
 
-When our model is applied to test data, its efficacy can be scrutinized and effectively communicated. Transparency is paramount in our reporting. Additionally, we've excluded variables that can only be determined post-hire from our training data, facilitating its utility for future candidate evaluations by the IBM acquisition team. 
+When our model is applied to test data, its efficacy can be scrutinized and effectively
+communicated. Transparency is paramount in our reporting. Additionally, we've excluded
+variables that can only be determined post-hire from our training data, facilitating
+its utility for future candidate evaluations by the IBM acquisition team. 
 
-While our model serves as a valuable tool, it's important to acknowledge its limitations. It's not infallible and should be complemented with other considerations such as resume details and interview performance. Our recommendations are based on upfront data, like marital status or proximity to the office, and should be integrated with holistic hiring practices.
+While our model serves as a valuable tool, it's important to acknowledge its
+limitations. It's not infallible and should be complemented with other considerations
+such as resume details and interview performance. Our recommendations are based on
+upfront data, like marital status or proximity to the office, and should be integrated
+with holistic hiring practices.
 
-It's essential to note that our model may not always identify the most qualified candidates, as it prioritizes retention probability over immediate output. This strategic focus might initially impact short-term productivity. However, the long-term benefits of reduced attrition and sustained workforce stability outweigh these potential shortfalls.
+It's essential to note that our model may not always identify the most qualified
+candidates, as it prioritizes retention probability over immediate output. This
+strategic focus might initially impact short-term productivity. However, the long-term
+benefits of reduced attrition and sustained workforce stability outweigh these
+potential shortfalls.
 
 # Data Exploration
 
@@ -67,7 +108,8 @@ ggplot(employee, aes(x = factor(Attrition), fill = factor(Attrition))) +
        x = "",
        y = "Amount") +
   scale_x_discrete(labels = c("Not Attrition", "Attrition")) +
-  scale_fill_manual(values = c("darkgrey", "white"), guide = FALSE) +  # Set fill colors manually
+  scale_fill_manual(values = c("darkgrey", "white"), guide = FALSE) +
+  # Set fill colors manually
   theme_minimal() +
   theme(panel.grid.major = element_blank(),
         panel.grid.minor = element_blank(),
@@ -77,7 +119,8 @@ ggplot(employee, aes(x = factor(Attrition), fill = factor(Attrition))) +
 
 ## Clean data
 
-We delete some useless variables and factor those that need to be factored. We then take another look at our updated data.
+We delete some useless variables and factor those that need to be factored. We then
+take another look at our updated data.
 ```{r}
 employee$Attrition <- as.factor(employee$Attrition)
 employee$BusinessTravel <- as.factor(employee$BusinessTravel)
@@ -94,7 +137,8 @@ summary(employee)
 
 ## View Data
 
-We run a for loop to look at a histogram of all of our numerical variables. This gives us a better idea of the makeup of the data.
+We run a for loop to look at a histogram of all of our numerical variables. This gives
+us a better idea of the makeup of the data.
 
 ```{r}
 library(ggplot2)
@@ -113,7 +157,9 @@ for (var in numerical_vars) {
 
 ```
 
-We notice that some variables are useless as they are the same for every observation. Therefore, we delete these variables. We also notice that performance rating is actually a binary variable so we choose to factor it.
+We notice that some variables are useless as they are the same for every observation.
+Therefore, we delete these variables. We also notice that performance rating is
+actually a binary variable so we choose to factor it.
 
 ```{r}
 
@@ -136,14 +182,36 @@ print(correlation_matrix)
 
 ```
 
-We see the only numerical variables that are heavily correlated are monthly income and job level. They have an R^2 of about $0.95$. This makes sense and the correlation is not perfectly $1$. Additionally, both variables seem very relevant to our question, so we choose to keep them both.
+We see the only numerical variables that are heavily correlated are monthly income and
+job level. They have an R^2 of about $0.95$. This makes sense and the correlation is
+not perfectly $1$. Additionally, both variables seem very relevant to our question, so
+we choose to keep them both.
 
 ## Make Variable to Predict
 
-We decide that we want to predict on our data before any hire is made. This means that we have to delete variables that can only be determined by following a hire. This includes variables such as job satisfaction and years at company. <br> Before we do this however, we make a variable for prediction. We call it employee quality. "Quality" is representative of the amount of money an employee makes our company daily. This is why we are subtracting monthly income divided 30. Any data that is a positive indicator of job performance or output leads to a greater employee quality. Research led us to allocate the weight of each variable. For instance, increased job involvement from employees has been shown to lead to massive increases in a profit for companies. <br> Admittedly, this metric is quite arbitrary. It is most definitely not a perfect representation of profit per customer, as this is likely impossible to represent with a single number. This is because many factors can not be measured, and some things such as interaction between co workers can not be shown with one number. At any rate however, this provides us a benchmark that certainly has some significance. <br> After this is done, we look at a histogram of our new quality variable. Notice that it is mostly normally distributed, further ensuring its validity as an accurate measurement of quality. Also notice that the mean quality is $-16$ dollars, suggesting that we are likely underestimating profit per worker.
+We decide that we want to predict on our data before any hire is made. This means that
+we have to delete variables that can only be determined by following a hire. This 
+includes variables such as job satisfaction and years at company. <br> Before we do 
+this however, we make a variable for prediction. We call it employee quality. "Quality"
+is representative of the amount of money an employee makes our company daily. This is 
+why we are subtracting monthly income divided 30. Any data that is a positive indicator
+of job performance or output leads to a greater employee quality. Research led us to 
+allocate the weight of each variable. For instance, increased job involvement from 
+employees has been shown to lead to massive increases in a profit for companies. <br> 
+Admittedly, this metric is quite arbitrary. It is most definitely not a perfect 
+representation of profit per customer, as this is likely impossible to represent with a
+single number. This is because many factors can not be measured, and some things such 
+as interaction between co workers can not be shown with one number. At any rate 
+however, this provides us a benchmark that certainly has some significance. <br> After 
+this is done, we look at a histogram of our new quality variable. Notice that it is 
+mostly normally distributed, further ensuring its validity as an accurate measurement 
+of quality. Also notice that the mean quality is $-16$ dollars, suggesting that we are 
+likely underestimating profit per worker.
 
 ```{r}
-employee$Quality <- with(employee, (100 * YearsAtCompany / Age) + (40 * JobInvolvement) + (20 * JobLevel) + ifelse(OverTime == "Yes", 30, 0) + ifelse(PerformanceRating == "4", 150, 0) - (MonthlyIncome / 30))
+employee$Quality <- with(employee, (100 * YearsAtCompany / Age) + (40 * JobInvolvement) 
+                         + (20 * JobLevel) + ifelse(OverTime == "Yes", 30, 0) + 
+                           ifelse(PerformanceRating == "4", 150, 0) - (MonthlyIncome / 30))
 
 employee$YearsAtCompany <- NULL
 employee$YearsInCurrentRole <- NULL
@@ -169,7 +237,8 @@ hist(employee$Quality,
      col = 'black', 
      border = 'white',
      xlab = "$ Added per Day",
-     breaks = seq(-500, 350, by = 50))  # Adjust the breaks argument to set intervals of 50 on the x-axis
+     breaks = seq(-500, 350, by = 50))  
+# Adjust the breaks argument to set intervals of 50 on the x-axis
 
 mean(employee$Quality)
 
@@ -177,7 +246,9 @@ mean(employee$Quality)
 
 ## Normalize Data
 
-We have to normalize our data in order to run some of our models. This ensures that all of our data has equal weight. Otherwise, some variables would be have too much weight in determining our predictions.
+We have to normalize our data in order to run some of our models. This ensures that all
+of our data has equal weight. Otherwise, some variables would be have too much weight 
+in determining our predictions.
 
 ```{r}
 employeedummy <- as.data.frame(model.matrix(~. -1, data=employee))
@@ -192,8 +263,17 @@ employee_n <- as.data.frame(lapply(employeedummy, normalize))
 
 ## Prepare for Quality Prediction
 
-We make Quality a binary variable for prediction. We decide that if a worker has an output of over $50$ dollars a day, they are a quality worker. Once again, this is an arbitrary cutoff, but it gives us something to work with. It also ensures that even if our quality metric is prone to error, those who are rated as "high quality" are still very likely to produce a profit. <br>
-We then look at a graph showing the main problem with IBM's hires. The quality workers are those who are most likely to quit. Despite quality workers making up about $25$% of workers, about $50$% of those who quit are among those quality workers. This is the fundamental issue with our current hires. We are hiring for quality, but many of them are quitting. We need a more holistic hire process, where we also search for loyal workers.
+We make Quality a binary variable for prediction. We decide that if a worker has an 
+output of over $50$ dollars a day, they are a quality worker. Once again, this is an 
+arbitrary cutoff, but it gives us something to work with. It also ensures that even if 
+our quality metric is prone to error, those who are rated as "high quality" are still 
+very likely to produce a profit. <br>
+We then look at a graph showing the main problem with IBM's hires. The quality workers 
+are those who are most likely to quit. Despite quality workers making up about $25$% of
+workers, about $50$% of those who quit are among those quality workers. This is the 
+fundamental issue with our current hires. We are hiring for quality, but many of them 
+are quitting. We need a more holistic hire process, where we also search for loyal 
+workers.
 
 ```{r}
 employee_n$Quality <- employee$Quality
@@ -205,7 +285,8 @@ ggplot(employee_n, aes(x = factor(AttritionYes), fill = factor(Quality))) +
   labs(title = "                                Attrition vs Quality",
        x = "",
        y = "Count") +
-  scale_x_discrete(labels = c("Not Attrition", "Attrition", "Not Attrition, Attrition")) +
+  scale_x_discrete(labels = 
+                     c("Not Attrition", "Attrition", "Not Attrition, Attrition")) +
   scale_fill_manual(values = c("white", "black"), guide = FALSE) +
   facet_wrap(~factor(Quality, labels = c("Not Quality", "Quality"))) +
   theme_minimal() +
@@ -219,7 +300,10 @@ ggplot(employee_n, aes(x = factor(AttritionYes), fill = factor(Quality))) +
 
 ## Prepare for Attrition Prediction
 
-We make a different very similar data set to predict attrition. We are careful not to include quality when prediction attrition, and vice versa. We are now prepared to make models predicting both attrition and quality. We take a quick at our datasets to confirm.
+We make a different very similar data set to predict attrition. We are careful not to 
+include quality when prediction attrition, and vice versa. We are now prepared to make 
+models predicting both attrition and quality. We take a quick at our datasets to 
+confirm.
 
 ```{r}
 attrition <- employee_n
@@ -234,7 +318,11 @@ summary(attrition)
 
 ## Test/Train
 
-We create a test/train split for our data. We will build our models with the train data and evaluate our models with the test data. We choose a ratio of 0.5 to ensure that we have ample data for both testing and training. We split our attrition and quality data sets with the same splits. Additionally, we split our numerical variable with the same split for later evaluation.
+We create a test/train split for our data. We will build our models with the train data
+and evaluate our models with the test data. We choose a ratio of 0.5 to ensure that we 
+have ample data for both testing and training. We split our attrition and quality data 
+sets with the same splits. Additionally, we split our numerical variable with the same 
+split for later evaluation.
 
 ```{r}
 ratio <- 0.5
@@ -267,7 +355,9 @@ quality <- employee[-trainRows,]
 
 ## Make GLM Model
 
-We use our train data to build a GLM model for quality. Once again, this only includes variables that can be acquired prior to a hire. We then check to see how our model predicts on the test data. We have a Kappa of $0.40$.
+We use our train data to build a GLM model for quality. Once again, this only includes 
+variables that can be acquired prior to a hire. We then check to see how our model 
+predicts on the test data. We have a Kappa of $0.40$.
 
 ```{r}
 library(caret)
@@ -280,7 +370,15 @@ confusionMatrix(as.factor(glmBin), as.factor(employeeTest$Quality), positive = "
 
 ## Make KNN Model
 
-We build our KNN model for employee quality and save our predictions. KNN takes a test data point and finds the data points from the train data that our closest to our test data point. It then uses a majority vote to choose what we assign this variable as (1 or 0). "K" is the amount of variables close to our test data point from the train data that we use to predict. We try many $k$'s and we determined that a $k$ of $13$ works the best on the data. Our rule of thumb says it should be $\sqrt{735} \approx 27$ but this gives us a much worse model. This is likely due to the low amount of variables. We then evaluate how our model performs on the test data. We see that we have a Kappa of $0.40$.
+We build our KNN model for employee quality and save our predictions. KNN takes a test 
+data point and finds the data points from the train data that our closest to our test 
+data point. It then uses a majority vote to choose what we assign this variable as (1 
+or 0). "$K$" is the amount of variables close to our test data point from the train 
+data that we use to predict. We try many $k$'s and we determined that a $k$ of $13$ 
+works the best on the data. Our rule of thumb says it should be $\sqrt{735} \approx 27$
+but this gives us a much worse model. This is likely due to the low amount of 
+variables. We then evaluate how our model performs on the test data. We see that we 
+have a Kappa of $0.40$.
 
 ```{r}
 library(class)
@@ -290,7 +388,14 @@ confusionMatrix(as.factor(KnnModel), as.factor(employeeTest$Quality), positive =
 
 ## Make ANN Model
 
-We make our Neural Network model to predict quality. This model is based on the human brain. In each layer, every neuron is connected to every neuron in the previous layer. We use $5$ hidden layers of $60$, $30$, $10$, $6$, and $4$ for a total of $110$ neurons. We increase our learning rate factor and threshold in order to ensure that our program runs in a reasonable time. We then make predictions on our test data. We will not save our binary predictions because we will allow our decision tree to find a good threshold. However, we will use them to evaluate our model. We see that we achieve a Kappa of $0.43$.
+We make our Neural Network model to predict quality. This model is based on the human 
+brain. In each layer, every neuron is connected to every neuron in the previous layer. 
+We use $5$ hidden layers of $60$, $30$, $10$, $6$, and $4$ for a total of $110$ 
+neurons. We increase our learning rate factor and threshold in order to ensure that our
+program runs in a reasonable time. We then make predictions on our test data. We will 
+not save our binary predictions because we will allow our decision tree to find a good 
+threshold. However, we will use them to evaluate our model. We see that we achieve a 
+Kappa of $0.43$.
 
 ```{r}
 library(neuralnet)
@@ -314,14 +419,19 @@ confusionMatrix(as.factor(annBin), as.factor(employeeTest$Quality), positive = "
 ```
 
 ## Make SVM Model
-We make our SVM model and make binary predictions on quality. We try many different kernels and evaluate the kappa of each model on the test data. We save the model with the best kappa to be our SVM model that goes into our decision tree. After running our model, we see that Vanilla performs the best so we save that model. It has a Kappa of $0.48$.
+We make our SVM model and make binary predictions on quality. We try many different 
+kernels and evaluate the kappa of each model on the test data. We save the model with 
+the best kappa to be our SVM model that goes into our decision tree. After running our 
+model, we see that Vanilla performs the best so we save that model. It has a Kappa of 
+$0.48$.
 
 
 ```{r}
 library(kernlab)
 library(caret)
 
-kernels <- c("vanilladot", "rbfdot", "polydot", "tanhdot", "laplacedot", "besseldot", "anovadot", "splinedot")
+kernels <- c("vanilladot", "rbfdot", "polydot", "tanhdot",
+             "laplacedot", "besseldot", "anovadot", "splinedot")
 best_kappa <- -Inf
 best_model <- NULL
 best_predictions <- NULL
@@ -352,7 +462,10 @@ cat("Best Model:", best_model, "- Best Kappa:", best_kappa, "\n")
 
 ## Decision Tree Model
 
-Now we make our basic decision tree model for quality. Many branches are made with binary decisions for many different variables. At each leaf, $1$ or $0$ is chosen. We will feed these predictions into our larger decision tree model. First, we will evaluate these predictions. We see that we have a Kappa of $0.39$.
+Now we make our basic decision tree model for quality. Many branches are made with 
+binary decisions for many different variables. At each leaf, $1$ or $0$ is chosen. We 
+will feed these predictions into our larger decision tree model. First, we will 
+evaluate these predictions. We see that we have a Kappa of $0.39$.
 
 ```{r}
 library(C50)
@@ -365,7 +478,11 @@ confusionMatrix(as.factor(dtpredict), as.factor(employeeTest$Quality), positive 
 
 ## Making a Data Frame of All of Our Models
 
-We combine all of our previous model's predictions into a single data frame for our employee quality predictions. We are also sure to put our quality prediction into the data set so that we are able to train our model. If a non-binary prediction exists we are sure to enter that one into the data frame as want our final decision tree to make the thresholds for us. We will build our final model later.
+We combine all of our previous model's predictions into a single data frame for our 
+employee quality predictions. We are also sure to put our quality prediction into the 
+data set so that we are able to train our model. If a non-binary prediction exists we 
+are sure to enter that one into the data frame as want our final decision tree to make 
+the thresholds for us. We will build our final model later.
 
 ```{r}
 employeeModels <- data.frame(dtpredict, annPred, svmPredictions, KnnModel, glmPred, employeeTest$Quality)
@@ -379,7 +496,9 @@ str(employeeModels)
 
 ## Make GLM Model
 
-We now use our train data to make a GLM model for prediction attrition. We have a Kappa of $0.23$, indicating early on that our attrition model is less powerful than our quality model.
+We now use our train data to make a GLM model for prediction attrition. We have a Kappa
+of $0.23$, indicating early on that our attrition model is less powerful than our 
+quality model.
 
 ```{r}
 library(caret)
@@ -392,7 +511,8 @@ confusionMatrix(as.factor(glmBin), as.factor(attritionTest$AttritionYes), positi
 
 ## Make KNN Model
 
-We build our KNN model for attrition. This time, we find that a $k$ of $6$ works best. Once again, our model performs worse than it did for quality with a Kappa of $0.19$.
+We build our KNN model for attrition. This time, we find that a $k$ of $6$ works best. 
+Once again, our model performs worse than it did for quality with a Kappa of $0.19$.
 
 ```{r}
 library(class)
@@ -403,7 +523,9 @@ confusionMatrix(as.factor(KnnModel), as.factor(attritionTest$AttritionYes), posi
 
 ## Make ANN Model
 
-We make a our Neural Network model for predicting attrition. We once again use $5$ hidden layers of $60$, $30$, $10$, $6$, and $4$ for a total of $110$ neurons. We have a final Kappa of $0.23$, once again worse than the quality prediction.
+We make a our Neural Network model for predicting attrition. We once again use $5$ 
+hidden layers of $60$, $30$, $10$, $6$, and $4$ for a total of $110$ neurons. We have a
+final Kappa of $0.23$, once again worse than the quality prediction.
 
 ```{r}
 library(neuralnet)
@@ -427,7 +549,9 @@ confusionMatrix(as.factor(annBin), as.factor(attritionTest$AttritionYes), positi
 ```
 
 ## Make SVM Model
-We now make an SVM model for attrition. We once again try many different kernels, with Anova performing the best this time. It has a Kappa of $0.20$, once again much lower than our Kappa for quality.
+We now make an SVM model for attrition. We once again try many different kernels, with 
+Anova performing the best this time. It has a Kappa of $0.20$, once again much lower 
+than our Kappa for quality.
 
 
 ```{r}
@@ -465,7 +589,8 @@ cat("Best Model:", best_model, "- Best Kappa:", best_kappa, "\n")
 
 ## Decision Tree Model
 
-Now we make our basic decision tree model for attrition. We see that we have a Kappa of $0.20$, per usual this signifies less predicting power than our quality model.
+Now we make our basic decision tree model for attrition. We see that we have a Kappa of
+$0.20$, per usual this signifies less predicting power than our quality model.
 
 ```{r}
 library(C50)
@@ -478,7 +603,11 @@ confusionMatrix(as.factor(dtpredict), as.factor(attritionTest$AttritionYes), pos
 
 ## Making a Data Frame of All of Our Models
 
-We combine all of our previous model's predictions into a single data frame for attrition predictions. We are also sure to put our response variable, attrtion, into the data set so that we are able to train our model. If a non-binary prediction exists we are sure to enter that one into the data frame as want our final decision tree to make the thresholds for us.
+We combine all of our previous model's predictions into a single data frame for 
+attrition predictions. We are also sure to put our response variable, attrtion, into 
+the data set so that we are able to train our model. If a non-binary prediction exists 
+we are sure to enter that one into the data frame as want our final decision tree to 
+make the thresholds for us.
 
 ```{r}
 attritionModels <- data.frame(dtpredict, annPred, svmPredictions, KnnModel, glmPred, attritionTest$AttritionYes)
@@ -489,7 +618,10 @@ str(attritionModels)
 
 ## Break Data Frame into Test/Train
 
-We now break our final data frame into test and train with a ratio $.7/.3$. This will allow us to train our stacked decision trees and test on them. We split our data for both attrition and quality. Additionally, we give the same split to our numerial quality variable for later evaluation.
+We now break our final data frame into test and train with a ratio $.7/.3$. This will 
+allow us to train our stacked decision trees and test on them. We split our data for 
+both attrition and quality. Additionally, we give the same split to our numerial 
+quality variable for later evaluation.
 
 ```{r}
 ratio <- 0.7
@@ -507,7 +639,11 @@ quality <- quality$Quality
 
 ## Quality Final Tree with Cost Matrix
 
-Now we make our stacked decision tree for quality. We use different costs for false positives and false negatives. We associate a cost of $1.$ for false negatives and $1.25$ for false positives. The standard setting for a decision tree assigns a cost of $1$ for both. In this way, we are looking to avoid false positives as we want to ensure that we are hiring quality workers. 
+Now we make our stacked decision tree for quality. We use different costs for false 
+positives and false negatives. We associate a cost of $1.$ for false negatives and 
+$1.25$ for false positives. The standard setting for a decision tree assigns a cost of 
+$1$ for both. In this way, we are looking to avoid false positives as we want to ensure
+that we are hiring quality workers. 
 
 ```{r}
 #1.25, 1
@@ -520,11 +656,15 @@ confusionMatrix(as.factor(employeepredict), as.factor(employeeTest$employeeTest.
 
 ```
 
-Our stacked model performed better than any of the base models, with a Kappa of $0.49$. Also, our cost matrix led to a less amount of false positives, meaning we are mostly selecting quality workers.
+Our stacked model performed better than any of the base models, with a Kappa of $0.49$.
+Also, our cost matrix led to a less amount of false positives, meaning we are mostly 
+selecting quality workers.
 
 ## Attrition Final Tree with Cost Matrix
 
-It is paramount that we do not hire workers who are will just quit. Therefore we assign a cost of $5$ for false negatives and only $1$ for false positives. This will ensure that almost everyone we predict will not quit, will not actually quit.
+It is paramount that we do not hire workers who are will just quit. Therefore we assign
+a cost of $5$ for false negatives and only $1$ for false positives. This will ensure 
+that almost everyone we predict will not quit, will not actually quit.
 
 ```{r}
 #1, 5
@@ -537,11 +677,16 @@ confusionMatrix(as.factor(attritionpredict), as.factor(attritionTest$attritionTe
 
 ```
 
-We have a kappa of about $0.39$, which is significantly better than all of our base models. This shows the power of the cost matrix. Additionally, we have an extremely small number of false negatives, as intended. This shows that our model has performed very well for our goal.
+We have a kappa of about $0.39$, which is significantly better than all of our base 
+models. This shows the power of the cost matrix. Additionally, we have an extremely 
+small number of false negatives, as intended. This shows that our model has performed 
+very well for our goal.
 
 ## Plot all of our Kappas
 
-We make a plot to look at the performance of all our models. This allows us to better understand our performance. Notice the massive improvement in our attrition Kappa with our ultimate, stacked model.
+We make a plot to look at the performance of all our models. This allows us to better 
+understand our performance. Notice the massive improvement in our attrition Kappa with 
+our ultimate, stacked model.
 
 ```{r}
 library(ggplot2)
@@ -568,9 +713,15 @@ ggplot(melted_data, aes(x = Models, y = Kappa, fill = Variable)) +
 
 ## Make Final Predictions
 
-We decide to hire someone if we predict that they are both a quality worker, and they will not quit. We call this "doHire." We make confusion matrices to see how many of hires are quality and how many will eventually quit. We see that we chose to hire only $4$ workers who will eventually quit, less than $15%$ of our hires. <br>
-
-We also check how accurate our model is on choosing to hire. We check the actual quality and attrition values and then use the same criteria for hire. We then compare these results to our predictions. We did quite well, with $18$ hires being good hires and only $15$ being poor. With all of the variables we had deleted, this is a staggering performance. We have a final Kappa of $0.32$.
+We decide to hire someone if we predict that they are both a quality worker, and they 
+will not quit. We call this "doHire." We make confusion matrices to see how many of 
+hires are quality and how many will eventually quit. We see that we chose to hire only 
+$4$ workers who will eventually quit, less than $15%$ of our hires. <br>
+We also check how accurate our model is on choosing to hire. We check the actual 
+quality and attrition values and then use the same criteria for hire. We then compare 
+these results to our predictions. We did quite well, with $18$ hires being good hires 
+and only $15$ being poor. With all of the variables we had deleted, this is a 
+staggering performance. We have a final Kappa of $0.32$.
 
 
 ```{r}
@@ -592,30 +743,46 @@ conf_df <- as.data.frame(as.matrix(conf$table))
 
 
 ggplot(data = conf_matrix_df, aes(x = Reference, y = Prediction)) +
-  geom_tile(aes(fill = Freq), colour = "black") +  # Change the color of borders to black
-  geom_text(aes(label = Freq), color = "black", family = "Arial") +  # Change text color to black and font family to Arial
+  geom_tile(aes(fill = Freq), colour = "black") +  
+  # Change the color of borders to black
+  geom_text(aes(label = Freq), color = "black", family = "Arial") + 
+  # Change text color to black and font family to Arial
   theme_minimal() +
   scale_fill_gradient(low = "white", high = "darkgrey") +
-  labs(x = "Ideal Hire Choice", y = "Model's Hire Choice", title = "                       Confusion Matrix of Hires") +
-  theme(axis.text = element_text(size = 12, family = "Times New Roman"),  # Change font family for axis text
-        axis.title = element_text(size = 14, face = "bold", family = "Times New Roman"),  # Change font family for axis titles
+  labs(x = "Ideal Hire Choice", y = "Model's Hire Choice",
+       title = "                       Confusion Matrix of Hires") +
+  theme(axis.text = element_text(size = 12, family = "Times New Roman"),
+        # Change font family for axis text
+        axis.title = element_text(size = 14, face = "bold", family = "Times New Roman"),  
+        # Change font family for axis titles
         plot.title = element_text(size = 16, face = "bold", family = "Times New Roman"))
 
 
 ggplot(data = conf_df, aes(x = Reference, y = Prediction)) +
-  geom_tile(aes(fill = Freq), colour = "black") +  # Change the color of borders to black
-  geom_text(aes(label = Freq), color = "black", family = "Arial") +  # Change text color to black and font family to Arial
+  geom_tile(aes(fill = Freq), colour = "black") +  
+  # Change the color of borders to black
+  geom_text(aes(label = Freq), color = "black", family = "Arial") +  
+  # Change text color to black and font family to Arial
   theme_minimal() +
   scale_fill_gradient(low = "white", high = "darkgrey") +
-  labs(x = "Hire would Quit", y = "Recommended Hire", title = "         Recommended Hire Compared to Attrition") +
-  theme(axis.text = element_text(size = 12, family = "Times New Roman"),  # Change font family for axis text
-        axis.title = element_text(size = 14, face = "bold", family = "Times New Roman"),  # Change font family for axis titles
+  labs(x = "Hire would Quit", y = "Recommended Hire",
+       title = "         Recommended Hire Compared to Attrition") +
+  theme(axis.text = element_text(size = 12, family = "Times New Roman"),  
+        # Change font family for axis text
+        axis.title = element_text(size = 14, face = "bold", family = "Times New Roman"),  
+        # Change font family for axis titles
         plot.title = element_text(size = 16, face = "bold", family = "Times New Roman"))
 ```
 
 ## Finding our Final Profit
 
-We kept our numerical quality from earlier for a reason. We want to evaluate our total final profit. First, we look a histogram of the Quality of our recommended hires. Notice that even those below 50, which we rate as "Not Quality," are still above $0$ or not far below it. This is a very good sign. Finally, we take our $4$ workers who will quit out of our data set and we add up the remaining hires quality. This gives us our final increase in dollars per hour. We have a net profit of about $2,500$ dollars. This means we have $$\frac{2,500}{33} \approx 75 \text{ dollars per hire}$$
+We kept our numerical quality from earlier for a reason. We want to evaluate our total 
+final profit. First, we look a histogram of the Quality of our recommended hires. 
+Notice that even those below 50, which we rate as "Not Quality," are still above $0$ or
+not far below it. This is a very good sign. Finally, we take our $4$ workers who will 
+quit out of our data set and we add up the remaining hires quality. This gives us our 
+final increase in dollars per hour. We have a net profit of about $2,500$ dollars. This
+means we have $$\frac{2,500}{33} \approx 75 \text{ dollars per hire}$$
 
 ```{r}
 qualityOfHires = data.frame(quality, doHire, attritionTest$attritionTest.AttritionYes) 
@@ -636,10 +803,31 @@ sum(subset$quality)
 
 # Conclusions
 
-Our model was largely successful and powerful on predicting who we should hire based on our metrics. This is made evident by the average profit per day per worker of $75$ dollars. This number may be based on our arbitrary assumptions, but it is such as massive increase from the initial $-16$ dollars that its power can not be denied. And at any rate, we are increasing variables that are certainly correlated with increased job performance. Its power is meaningful as we initially deleted any variables highly correlated with on the variables we were predicting. The only variables remaining were those giving basic information on a candidate such as education and distance from home. This ensures that our model can be used when trying to make hires.<br>
+Our model was largely successful and powerful on predicting who we should hire based on
+our metrics. This is made evident by the average profit per day per worker of $75$ 
+dollars. This number may be based on our arbitrary assumptions, but it is such as 
+massive increase from the initial $-16$ dollars that its power can not be denied. And 
+at any rate, we are increasing variables that are certainly correlated with increased 
+job performance. Its power is meaningful as we initially deleted any variables highly 
+correlated with on the variables we were predicting. The only variables remaining were 
+those giving basic information on a candidate such as education and distance from home.
+This ensures that our model can be used when trying to make hires.<br>
 
-With the power of the cost matrix, we were able to nearly entirely avoid workers who will eventually quit. This would lead to much more long-term profits. Our recommended hires are of both high quality and likely to be loyal. This is what led to about $75$ extra dollars per day per worker with our recommended hires. <br>
+With the power of the cost matrix, we were able to nearly entirely avoid workers who 
+will eventually quit. This would lead to much more long-term profits. Our recommended 
+hires are of both high quality and likely to be loyal. This is what led to about $75$ 
+extra dollars per day per worker with our recommended hires. <br>
 
-With that said, our model was not perfect. Our model did recommend hiring some individuals who would not lead to increased profits. Due to this, we recommend that our model be used in conjunction with other hiring methods. This may include typical resume drops or interviews. In this way, with a holistic approach, IBM can make the most profitable hires possible. <br>
+With that said, our model was not perfect. Our model did recommend hiring some 
+individuals who would not lead to increased profits. Due to this, we recommend that our
+model be used in conjunction with other hiring methods. This may include typical resume
+drops or interviews. In this way, with a holistic approach, IBM can make the most 
+profitable hires possible. <br>
 
-Expanding on that previous note, our current model is based on the idea that we are using the model as the sole method for hiring. The results are good, but they can be improved upon with a holistic approach. This entails using our model to screen candidates for interviews. Therefore, we would entirely change the cost matrices. We currently have $(0, 5, 4, 0)$ for quality. If we were screening, we may change this to $(0,1,1,0)$. Likewise, we may change our attrition cost matrix from $(0,1,5,0)$ to $(0,1,2,0)$.
+Expanding on that previous note, our current model is based on the idea that we are 
+using the model as the sole method for hiring. The results are good, but they can be 
+improved upon with a holistic approach. This entails using our model to screen 
+candidates for interviews. Therefore, we would entirely change the cost matrices. We 
+currently have $(0, 5, 4, 0)$ for quality. If we were screening, we may change this to 
+$(0,1,1,0)$. Likewise, we may change our attrition cost matrix from $(0,1,5,0)$ to 
+$(0,1,2,0)$.
