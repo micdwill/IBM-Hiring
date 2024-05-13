@@ -1,4 +1,4 @@
-# IBM Acquisition Team Reccomendations
+# IBM Acquisition Team Recommendations
 In this project I have put myself in the position of a data scientist for IBM making a presentation to the acquisition. I look at current workers and their 
 output and make a predictive model for the best workers. In order to this, I engineer a variable, called 'Quality' to predict. Additionally, I also predict 
 'attrition,' which means a worker will quit within the next 2 years. In this manner, I am completing a 2-variable prediction for a hollistic hiring approach.
